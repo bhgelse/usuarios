@@ -5,6 +5,7 @@ import com.gelse.usuarios.dto.DatosRegistroUsuario;
 import com.gelse.usuarios.dto.DatosRespuestaUsuario;
 import com.gelse.usuarios.model.Usuario;
 import com.gelse.usuarios.repository.IUsuarioRepositoy;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,7 +45,7 @@ public class UsuarioController {
     public ResponseEntity actualizar(@RequestBody @Valid DatosActualizarUsuario datos, @PathVariable Long id) {
         Usuario usuario = usuarioRepositoy.getReferenceById(id);
         if(usuario.getEstado() != true){
-            throw new RuntimeException("Este usuario no se encuentra activo");
+            throw new EntityNotFoundException("Este usuario no se encuentra disponible");
         }
         usuario.actualizarInformacion(datos);
         var datosRespuestaUsuario = new DatosRespuestaUsuario(usuario);
