@@ -1,4 +1,4 @@
-package com.gelse.usuarios.infra.excepcions;
+package com.gelse.usuarios.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;

@@ -4,8 +4,7 @@ import com.gelse.usuarios.dto.DatosActualizarUsuario;
 import com.gelse.usuarios.dto.DatosRegistroUsuario;
 import com.gelse.usuarios.dto.DatosRespuestaUsuario;
 import com.gelse.usuarios.model.Usuario;
-import com.gelse.usuarios.repository.IUsuarioRepositoy;
-import jakarta.persistence.EntityNotFoundException;
+import com.gelse.usuarios.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,12 +22,13 @@ import java.net.URI;
 public class UsuarioController {
 
     @Autowired
-    IUsuarioRepositoy usuarioRepositoy;
+    private UsuarioService usuarioService;
 
     @Transactional
     @PostMapping
     public ResponseEntity<DatosRespuestaUsuario> registrar(@RequestBody @Valid DatosRegistroUsuario datos, UriComponentsBuilder uriComponentsBuilder) {
-        Usuario usuario = usuarioRepositoy.save(new Usuario(datos));
+        //Usuario usuario = usuarioRepositoy.save(new Usuario(datos));
+        Usuario usuario = usuarioService.registrarUsuario(datos);
         URI url = uriComponentsBuilder.path("/usuarios/{id}").buildAndExpand(usuario.getId()).toUri();
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario);
         return ResponseEntity.created(url).body(datosRespuestaUsuario);
@@ -36,18 +36,14 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<Page<DatosRespuestaUsuario>> listar(@PageableDefault(size = 5) Pageable pageable) {
-        Page<DatosRespuestaUsuario> respuestaUsuarios = usuarioRepositoy.findByEstadoTrue(pageable).map(DatosRespuestaUsuario::new);
-        return ResponseEntity.ok(respuestaUsuarios);
+        Page<DatosRespuestaUsuario> listaUsuarios = usuarioService.listarUsuario(pageable);
+        return ResponseEntity.ok(listaUsuarios);
     }
 
     @Transactional
     @PutMapping("/{id}")
     public ResponseEntity actualizar(@RequestBody @Valid DatosActualizarUsuario datos, @PathVariable Long id) {
-        Usuario usuario = usuarioRepositoy.getReferenceById(id);
-        if(usuario.getEstado() != true){
-            throw new EntityNotFoundException("Este usuario no se encuentra disponible");
-        }
-        usuario.actualizarInformacion(datos);
+        Usuario usuario = usuarioService.actualizarUsuario(id, datos);
         var datosRespuestaUsuario = new DatosRespuestaUsuario(usuario);
         return ResponseEntity.ok(datosRespuestaUsuario);
     }
@@ -55,8 +51,7 @@ public class UsuarioController {
     @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity eliminar(@PathVariable Long id) {
-        Usuario usuario = usuarioRepositoy.getReferenceById(id);
-        usuario.desactivarUsuario();
+        usuarioService.eliminarUsuario(id);
         return ResponseEntity.noContent().build();
     }
 
