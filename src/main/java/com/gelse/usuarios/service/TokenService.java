@@ -3,6 +3,7 @@ package com.gelse.usuarios.service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.gelse.usuarios.model.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,10 @@ public class TokenService {
 
     @Value("${api.security.token.secret}")
     private String secret;
+
     // 7
     //generacion de token
-    public String generarToken(Usuario usuario){
+    public String generarToken(Usuario usuario) {
         try {
             Algorithm algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
@@ -27,12 +29,27 @@ public class TokenService {
                     .withSubject(usuario.getEmail())
                     .withExpiresAt(fechaExpiracion())
                     .sign(algoritmo);
-        } catch (JWTCreationException exception){
+        } catch (JWTCreationException exception) {
             throw new RuntimeException("Error al generar el token JWT", exception);
         }
     }
 
     private Instant fechaExpiracion() {
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-05:00"));
+    }
+
+    // 9
+    public String getSubject(String tokenJWT){
+        try {
+            Algorithm algoritmo = Algorithm.HMAC256(secret);
+            return JWT.require(algoritmo)
+                    .withIssuer("API usuarios")
+                    .build()
+                    .verify(tokenJWT)
+                    .getSubject();
+
+        } catch (JWTVerificationException exception){
+            throw new RuntimeException("Token JWT invalido o expirado");
+        }
     }
 }
