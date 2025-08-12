@@ -1,6 +1,6 @@
-package com.gelse.usuarios.repository;
+package com.gelse.app.repository;
 
-import com.gelse.usuarios.model.Usuario;
+import com.gelse.app.model.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

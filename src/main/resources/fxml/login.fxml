@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.gelse.app.javafx.controller.FXLoginController">
+    <Label text="Iniciar sesión"/>
+    <TextField fx:id="usernameField" promptText="Usuario"/>
+    <PasswordField fx:id="passwordField" promptText="Contraseña"/>
+    <Button text="Entrar" onAction="#login"/>
+</VBox>

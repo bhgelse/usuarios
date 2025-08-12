@@ -1,8 +1,8 @@
-package com.gelse.usuarios.model;
+package com.gelse.app.model;
 
 
-import com.gelse.usuarios.dto.DatosActualizarUsuario;
-import com.gelse.usuarios.dto.DatosRegistroUsuario;
+import com.gelse.app.dto.DatosActualizarUsuario;
+import com.gelse.app.dto.DatosRegistroUsuario;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;

@@ -1,8 +1,7 @@
-package com.gelse.usuarios.config;
+package com.gelse.app.config;
 
-import com.gelse.usuarios.model.Usuario;
-import com.gelse.usuarios.repository.IUsuarioRepositoy;
-import com.gelse.usuarios.service.TokenService;
+import com.gelse.app.repository.IUsuarioRepositoy;
+import com.gelse.app.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.security.auth.Subject;
 import java.io.IOException;
 
 @Component

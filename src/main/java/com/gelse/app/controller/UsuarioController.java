@@ -1,10 +1,10 @@
-package com.gelse.usuarios.controller;
+package com.gelse.app.controller;
 
-import com.gelse.usuarios.dto.DatosActualizarUsuario;
-import com.gelse.usuarios.dto.DatosRegistroUsuario;
-import com.gelse.usuarios.dto.DatosRespuestaUsuario;
-import com.gelse.usuarios.model.Usuario;
-import com.gelse.usuarios.service.UsuarioService;
+import com.gelse.app.dto.DatosActualizarUsuario;
+import com.gelse.app.dto.DatosRegistroUsuario;
+import com.gelse.app.dto.DatosRespuestaUsuario;
+import com.gelse.app.model.Usuario;
+import com.gelse.app.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

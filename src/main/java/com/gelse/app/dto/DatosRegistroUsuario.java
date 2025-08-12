@@ -1,4 +1,4 @@
-package com.gelse.usuarios.dto;
+package com.gelse.app.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

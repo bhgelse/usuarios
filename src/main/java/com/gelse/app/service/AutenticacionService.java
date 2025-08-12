@@ -1,6 +1,6 @@
-package com.gelse.usuarios.service;
+package com.gelse.app.service;
 
-import com.gelse.usuarios.repository.IUsuarioRepositoy;
+import com.gelse.app.repository.IUsuarioRepositoy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

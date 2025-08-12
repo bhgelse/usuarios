@@ -1,4 +1,4 @@
-package com.gelse.usuarios.config;
+package com.gelse.app.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

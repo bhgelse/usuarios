@@ -1,10 +1,10 @@
-package com.gelse.usuarios.service;
+package com.gelse.app.service;
 
-import com.gelse.usuarios.dto.DatosActualizarUsuario;
-import com.gelse.usuarios.dto.DatosRegistroUsuario;
-import com.gelse.usuarios.dto.DatosRespuestaUsuario;
-import com.gelse.usuarios.model.Usuario;
-import com.gelse.usuarios.repository.IUsuarioRepositoy;
+import com.gelse.app.dto.DatosActualizarUsuario;
+import com.gelse.app.dto.DatosRegistroUsuario;
+import com.gelse.app.dto.DatosRespuestaUsuario;
+import com.gelse.app.model.Usuario;
+import com.gelse.app.repository.IUsuarioRepositoy;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

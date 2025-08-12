@@ -1,8 +1,6 @@
-package com.gelse.usuarios.dto;
+package com.gelse.app.dto;
 
-import com.gelse.usuarios.model.Usuario;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import com.gelse.app.model.Usuario;
 
 public record DatosRespuestaUsuario(
         Long id,

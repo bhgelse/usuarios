@@ -1,9 +1,9 @@
-package com.gelse.usuarios.controller;
+package com.gelse.app.controller;
 
-import com.gelse.usuarios.dto.DatosAutenticacion;
-import com.gelse.usuarios.dto.DatosTokenJWT;
-import com.gelse.usuarios.model.Usuario;
-import com.gelse.usuarios.service.TokenService;
+import com.gelse.app.dto.DatosAutenticacion;
+import com.gelse.app.dto.DatosTokenJWT;
+import com.gelse.app.model.Usuario;
+import com.gelse.app.service.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
